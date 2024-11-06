@@ -87,7 +87,7 @@ Pod::Spec.new do |spec|
   #  non-essential files like tests, examples and documentation.
   #
 
-    spec.source_files = 'LiteSurvey.framework'
+    spec.source_files = 'Framework/LiteSurvey.framework'
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
