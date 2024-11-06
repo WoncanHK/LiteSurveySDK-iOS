@@ -1,0 +1,6 @@
+framework module LiteSurvey {
+  umbrella header "LiteSurvey.h"
+  export *
+
+  module * { export * }
+}
