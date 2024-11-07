@@ -1,0 +1,6 @@
+framework module Pods_LiteSurveySDK_Demo {
+  umbrella header "Pods-LiteSurveySDK-Demo-umbrella.h"
+
+  export *
+  module * { export * }
+}
