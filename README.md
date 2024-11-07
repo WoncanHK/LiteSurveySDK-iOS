@@ -37,7 +37,7 @@ platform :ios, '13.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'LiteSurvey', '~> 0.0.1'
+    pod 'LiteSurvey', '~> 1.0.0'
 end
 ```
 
