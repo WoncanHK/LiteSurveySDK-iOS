@@ -1,0 +1,7 @@
+# 忽略 Pods 文件夹
+/Pods/
+
+# 忽略临时文件
+xcuserdata/
+DerivedData/
+*.xcuserstate
