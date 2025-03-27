@@ -1,16 +1,16 @@
 PODS:
-  - LiteSurvey (1.0.0)
+  - LiteSurvey (1.0.2)
 
 DEPENDENCIES:
-  - LiteSurvey (~> 1.0.0)
+  - LiteSurvey (~> 1.0.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - LiteSurvey
 
 SPEC CHECKSUMS:
-  LiteSurvey: acfe557739b6370f32c8adcfd2cc9eae98073c27
+  LiteSurvey: be31e83ab63f135ccf38268e1d5aee576d2bd948
 
-PODFILE CHECKSUM: 91fa0c0f32153014e3352792a3ddaf15bc191f0b
+PODFILE CHECKSUM: 61512365da6762cf6a02cd62b03968360e8fa805
 
 COCOAPODS: 1.16.2
