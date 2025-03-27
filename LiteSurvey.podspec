@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "LiteSurvey"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "LiteSurvey SDK for iOS can connect to LiteSurvey devices."
 
   # This description is used to generate tags and improve search results.
