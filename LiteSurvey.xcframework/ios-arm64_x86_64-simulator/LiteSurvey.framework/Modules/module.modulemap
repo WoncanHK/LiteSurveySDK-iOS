@@ -1,0 +1,4 @@
+framework module LiteSurvey {
+  header "LiteSurvey-Swift.h"
+  requires objc
+}

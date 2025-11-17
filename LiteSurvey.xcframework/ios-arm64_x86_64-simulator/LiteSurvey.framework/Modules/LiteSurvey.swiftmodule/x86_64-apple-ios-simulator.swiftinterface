@@ -1,0 +1,394 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name LiteSurvey
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
+import CoreBluetooth
+import CoreLocation
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+@_Concurrency.MainActor public protocol AccessoryScanDelegate {
+  @_Concurrency.MainActor func didFindAccessory(accessory: LiteSurvey.AccessoryScanResult)
+  @_Concurrency.MainActor func didLoseAccessory(accessory: LiteSurvey.AccessoryScanResult)
+  @_Concurrency.MainActor func accessoryScanDidFail(errorMessage: Swift.String)
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class AccessoryScanResult : ObjectiveC.NSObject {
+  @objc final public let type: LiteSurvey.LiteSurveyDeviceType
+  @objc final public let displayName: Swift.String
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class DemoDevice : LiteSurvey.LiteSurveyDevice {
+  #if compiler(>=5.3) && $NonescapableTypes
+  override public var deviceType: LiteSurvey.LiteSurveyDeviceType? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc override public var displayName: Swift.String? {
+    @objc get
+  }
+  #endif
+  @objc public func followSystemLocation()
+  @objc public func startRandomWalk(initialLocation: _LocationEssentials.CLLocationCoordinate2D)
+  @objc public func connect()
+  @objc override public init(delegate: any LiteSurvey.LiteSurveyDeviceDelegate)
+  @objc override public func startScan()
+  @objc override public func disconnect()
+  @objc override public func queryFirmwareUpgrade()
+  @objc override public func startFirmwareUpgrade()
+  @objc override public func startNtripConnection(ntripAccount: LiteSurvey.NtripAccountModel, transmitNmeaPosition: Swift.Bool)
+  @objc deinit
+}
+extension LiteSurvey.DemoDevice : CoreLocation.CLLocationManagerDelegate {
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [_LocationEssentials.CLLocation])
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: any Swift.Error)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+}
+@objc public enum AttitudeSensorMode : Swift.Int {
+  case Off = 0
+  case Calibration
+  case Handheld
+  case Tilt
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class AttitudeSensorStatus : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var rawValue: Swift.UInt32 {
+    @objc get
+  }
+  @objc public var isReady: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc public enum DataTransportType : Swift.Int {
+  case ExternalAccessory = 0
+  case BluetoothGATT
+  case BluetoothL2CAP
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(GnssFixStatus) public enum GnssFixStatus : Swift.Int, Swift.CustomStringConvertible {
+  case single = 1
+  case DGNSS = 2
+  case fixed = 4
+  case float = 5
+  case simulated = 8
+  case unknown = 0
+  public var description: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(GnssSystem) public enum GnssSystem : Swift.Int {
+  case GPS = 0
+  case GLONASS
+  case GALILEO
+  case QZSS
+  case Beidou
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class BatteryInfoModel : ObjectiveC.NSObject {
+  @objc final public let percentageRemaining: Swift.Int
+  @objc final public let chargerConnected: Swift.Bool
+  @objc final public let isCharging: Swift.Bool
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class ImuInfoModel : ObjectiveC.NSObject {
+  @objc final public let accelerometer: [Swift.Float]
+  @objc final public let gyroscope: [Swift.Float]
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class LiteSurveyDeviceInfoModel : ObjectiveC.NSObject {
+  @objc final public let deviceModel: Swift.String
+  @objc final public let deviceId: Swift.String
+  @objc final public let productName: Swift.String
+  @objc final public let serialNumber: Swift.String
+  @objc final public let firmwareVersion: Swift.String
+  @objc final public let hardwareVersion: Swift.String
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class LiteSurveyLocationModel : _LocationEssentials.CLLocation, @unchecked Swift.Sendable {
+  @objc public var fixStatus: LiteSurvey.GnssFixStatus {
+    get
+  }
+  @objc public var numSatsInView: Swift.Int {
+    get
+  }
+  @objc public var numSatsInUse: Swift.Int {
+    get
+  }
+  @objc public var refStationId: Swift.Int {
+    get
+  }
+  @objc public var diffDataDelaySeconds: Swift.Float {
+    get
+  }
+  @objc public var hdop: Swift.Float {
+    get
+  }
+  @objc public var vdop: Swift.Float {
+    get
+  }
+  @objc public var pdop: Swift.Float {
+    get
+  }
+  @objc public var geoidalSeparationMeters: Swift.Float {
+    get
+  }
+  @objc public var wgs84Altitude: _LocationEssentials.CLLocationDistance {
+    get
+  }
+  @objc deinit
+}
+extension LiteSurvey.LiteSurveyLocationModel {
+  @objc convenience dynamic public init(location: LiteSurvey.LiteSurveyLocationModel, latitude: Swift.Double, longitude: Swift.Double, altitude: Swift.Double, hAcc: Swift.Double, vAcc: Swift.Double)
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class NtripAccountModel : ObjectiveC.NSObject {
+  @objc public var address: Swift.String
+  @objc public var port: Swift.Int32
+  @objc public var mountpoint: Swift.String
+  @objc public var username: Swift.String
+  @objc public var password: Swift.String
+  @objc public init(address: Swift.String, port: Swift.Int32, mountpoint: Swift.String, username: Swift.String, password: Swift.String)
+  @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func testAccount(testDidSucceed: (() -> Swift.Void)?, testDidFail: ((_ error: Swift.String) -> Swift.Void)?)
+  #endif
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class SatelliteInfoModel : ObjectiveC.NSObject {
+  @objc final public let system: LiteSurvey.GnssSystem
+  @objc final public let satelliteId: Swift.Int
+  @objc final public let usedInFix: Swift.Bool
+  @objc final public let elevationDegrees: Swift.Float
+  @objc final public let azimuthDegrees: Swift.Float
+  @objc final public let signalList: [LiteSurvey.SignalInfoModel]
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class SignalInfoModel : ObjectiveC.NSObject {
+  @objc final public let gsvSignalId: Swift.Int
+  @objc final public let signalName: Swift.String
+  @objc final public let cn0DbHz: Swift.Float
+  @objc deinit
+}
+public protocol NtripMountpointDelegate {
+  func queryDidFailWithMessage(_ message: Swift.String)
+  func queryDidFindMountpoints(_ mountpoints: [Swift.String])
+}
+@objc public enum LiteSurveyDeviceType : Swift.Int, Swift.CaseIterable {
+  case GnssReceiver = 0
+  case RadioReceiver
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias AllCases = [LiteSurvey.LiteSurveyDeviceType]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [LiteSurvey.LiteSurveyDeviceType] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(NmeaType) public enum NmeaType : Swift.Int {
+  case GGA = 1
+  case GSA
+  case GSV
+  case RMC
+  case VTG
+  case GST
+  case ZDA
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(NtripConnectionStatus) public enum NtripConnectionStatus : Swift.Int, Swift.CustomStringConvertible {
+  case success = 0
+  case failed
+  case socketClosed
+  case retrying
+  case connecting
+  public var description: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers public class LiteSurveyDevice : ObjectiveC.NSObject {
+  public static func queryNtripMountpoint(address: Swift.String, port: Swift.Int, delegate: any LiteSurvey.NtripMountpointDelegate)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public static func setLoggingLevel(level: os.OSLogType?)
+  #endif
+  @objc public var delegate: any LiteSurvey.LiteSurveyDeviceDelegate {
+    @objc get
+    @objc set
+  }
+  public var deviceType: LiteSurvey.LiteSurveyDeviceType? {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var dataTransportType: LiteSurvey.DataTransportType? {
+    get
+  }
+  #endif
+  @objc @available(*, deprecated, renamed: "LiteSurveyDeviceScanner.shared.startScan(delegate:)", message: "Use LiteSurveyDeviceScanner to scan. LiteSurveyDevice instance will be provided via delegate instead.")
+  public init(delegate: any LiteSurvey.LiteSurveyDeviceDelegate)
+  @objc public func disconnect()
+  @objc public var displayName: Swift.String? {
+    get
+  }
+  @objc @available(*, deprecated, renamed: "LiteSurveyDeviceScanner.shared.startScan(delegate:)", message: "Use LiteSurveyDeviceScanner.shared.startScan instead.")
+  public func startScan()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getDeviceInfo() -> LiteSurvey.LiteSurveyDeviceInfoModel?
+  #endif
+  @objc public func setGnssSystems(enableGPS: Swift.Bool, enableGLONASS: Swift.Bool, enableGALILEO: Swift.Bool, enableQZSS: Swift.Bool, enableBeidou: Swift.Bool)
+  @objc public func setNmeaOutput(nmeaType: LiteSurvey.NmeaType, enable: Swift.Bool)
+  @objc public func enableRtcmOutput(rtcmMessageNumbers: [Swift.Int])
+  @objc public func disableRtcmOutput()
+  @objc public func setLaserState(enable: Swift.Bool)
+  @objc public func setLaserRangingOutputRate(rateMs: Swift.Int)
+  @objc public func setImuOutput(rateMillis: Swift.Int)
+  @objc public func queryFirmwareUpgrade()
+  @objc public func startFirmwareUpgrade()
+  @objc public func queryNtripMountpoint(address: Swift.String, port: Swift.Int)
+  @objc public func attitudeSensorConfiguration(mode: LiteSurvey.AttitudeSensorMode, poleHeight: Swift.Float = 0.0)
+  @objc public func startNtripConnection(ntripAccount: LiteSurvey.NtripAccountModel, transmitNmeaPosition: Swift.Bool)
+  @objc public func stopNtripConnection()
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getNtripAccount() -> LiteSurvey.NtripAccountModel?
+  #endif
+  @objc deinit
+}
+extension LiteSurvey.LiteSurveyDevice {
+  @objc @available(*, deprecated, renamed: "setGnssSystems(enableGPS:enableGLONASS:enableGALILEO:enableQZSS:enableBeidou:)")
+  dynamic public func setGnssSystems(_ enableGPS: Swift.Bool, enableGLONASS: Swift.Bool, enableGALILEO: Swift.Bool, enableQZSS: Swift.Bool, enableBeidou: Swift.Bool)
+  @objc @available(*, deprecated, renamed: "enableRtcmOutput(rtcmMessageNumbers:)")
+  dynamic public func setRtcmOutput(_ rtcmMessageNumbers: [Any])
+  @objc @available(*, deprecated, renamed: "setLaserState(enable:)")
+  dynamic public func setLaserState(_ enable: Swift.Bool)
+  @objc @available(*, deprecated, renamed: "setImuOutput(rateMillis:)")
+  dynamic public func setImuOutput(_ rateMillis: Swift.Int32)
+  @objc @available(*, deprecated, renamed: "queryNtripMountpoint(address:port:)")
+  dynamic public func queryNtripMountpoint(_ address: Swift.String, port: Swift.String)
+  @objc @available(*, deprecated, renamed: "startNtripConnection(ntripAccount:transmitNmeaPosition:)")
+  dynamic public func startNtripConnection(_ ntripAccount: LiteSurvey.NtripAccountModel, transmitNmeaPosition: Swift.Bool)
+  @objc @available(*, deprecated, renamed: "setNmeaOutput(nmeaType:enable:)")
+  dynamic public func setNmeaOutput(_ nmeaType: LiteSurvey.NmeaType, enable: Swift.Bool)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(*, deprecated, renamed: "LiteSurveyDevice")
+@objc public class LiteSurveyDeviceInterface : LiteSurvey.LiteSurveyDevice {
+  @available(*, deprecated, renamed: "LiteSurveyDeviceScanner.shared.startScan(delegate:)", message: "Use LiteSurveyDeviceScanner to scan. LiteSurveyDevice instance will be provided via delegate instead.")
+  @objc override public init(delegate: any LiteSurvey.LiteSurveyDeviceDelegate)
+  @objc deinit
+}
+@_Concurrency.MainActor @objc public protocol LiteSurveyDeviceDelegate {
+  @objc @_Concurrency.MainActor optional func deviceDidConnect(device: LiteSurvey.LiteSurveyDevice)
+  @objc @_Concurrency.MainActor optional func deviceDidDisconnect(device: LiteSurvey.LiteSurveyDevice)
+  @objc @_Concurrency.MainActor optional func didReceiveDeviceInfo(device: LiteSurvey.LiteSurveyDevice, deviceInfo: LiteSurvey.LiteSurveyDeviceInfoModel)
+  @objc @_Concurrency.MainActor optional func didReceiveLocation(_ location: LiteSurvey.LiteSurveyLocationModel)
+  @objc @_Concurrency.MainActor optional func didReceiveSatelliteInfo(_ satelliteInfoList: [LiteSurvey.SatelliteInfoModel])
+  @objc @_Concurrency.MainActor optional func didReceiveNmeaMessage(_ nmeaMessage: Swift.String)
+  @objc @_Concurrency.MainActor optional func didReceiveRtcmMessage(_ rtcmMessage: Foundation.Data)
+  @objc @_Concurrency.MainActor optional func didReceiveBatteryInfo(device: LiteSurvey.LiteSurveyDevice, batteryInfo: LiteSurvey.BatteryInfoModel)
+  @objc @_Concurrency.MainActor optional func laserStateDidChange(_ laserState: Swift.Bool)
+  @objc @_Concurrency.MainActor optional func didReceiveImuData(_ imuInfo: LiteSurvey.ImuInfoModel)
+  @objc @_Concurrency.MainActor optional func didReceiveFirmwareUpgradeAvailability(_ newFirmwareAvailable: Swift.Bool)
+  @objc @_Concurrency.MainActor optional func firmwareUpgradeDidProgress(_ progressPercentage: Swift.Int)
+  @objc @_Concurrency.MainActor optional func firmwareUpgradeDidFailWithError(_ errorMessage: Swift.String)
+  @objc @_Concurrency.MainActor optional func ntripMountpointQueryDidFailWithError(_ errorMessage: Swift.String)
+  @objc @_Concurrency.MainActor optional func ntripMountpointQueryDidFinishWithResult(_ mountpointList: [Swift.String])
+  @objc @_Concurrency.MainActor optional func ntripConnectionStatusDidChange(_ ntripConnectionStatus: LiteSurvey.NtripConnectionStatus)
+  @objc @_Concurrency.MainActor optional func ntripConnectionDidFailWithError(_ errorMessage: Swift.String)
+  @objc @_Concurrency.MainActor optional func scanDidFailWithError(errorMessage: Swift.String)
+  @objc @_Concurrency.MainActor optional func onAttitudeEulerAngles(status: LiteSurvey.AttitudeSensorStatus, unixMs: Swift.Int64, roll: Swift.Float, pitch: Swift.Float, yaw: Swift.Float, varRoll: Swift.Float, varPitch: Swift.Float, varYaw: Swift.Float, varRollPitch: Swift.Float, varRollYaw: Swift.Float, varPitchYaw: Swift.Float)
+  @objc @_Concurrency.MainActor optional func onAttitudeSensorCalibrationResult(angles: [Swift.Float])
+  @objc @_Concurrency.MainActor optional func onAttitudeSensorCalibrationStatus(targetHeading: Swift.Int, selectedHeadingZone: Swift.Int, validPointCount: [Swift.Int], currentHeading: Swift.Int, currentTilt: Swift.Int)
+  @objc @_Concurrency.MainActor optional func onTiltLocationChanged(tiltLocation: LiteSurvey.LiteSurveyLocationModel, tiltDegrees: Swift.Float)
+  @objc @_Concurrency.MainActor optional func onLaserRangingResult(distanceMeters: Swift.Float)
+  @available(*, deprecated, renamed: "deviceDidDisconnect(device:)")
+  @objc @_Concurrency.MainActor optional func deviceDidDisconnect()
+  @available(*, deprecated, renamed: "deviceDidConnect(device:)")
+  @objc @_Concurrency.MainActor optional func deviceDidConnect()
+  @available(*, deprecated, renamed: "didReceiveBatteryInfo(device:batteryInfo:)")
+  @objc @_Concurrency.MainActor optional func didReceiveBatteryInfo(_ batteryInfo: LiteSurvey.BatteryInfoModel)
+  @available(*, deprecated, renamed: "didReceiveDeviceInfo(device:deviceInfo:)")
+  @objc @_Concurrency.MainActor optional func didReceiveDeviceInfo(_ deviceInfo: LiteSurvey.LiteSurveyDeviceInfoModel)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class LiteSurveyDeviceScanner : ObjectiveC.NSObject {
+  public var connectedDevices: [LiteSurvey.LiteSurveyDevice] {
+    get
+  }
+  public var discoveredAccessories: [LiteSurvey.AccessoryScanResult] {
+    get
+  }
+  public var connectedAccessories: [LiteSurvey.LiteSurveyDevice] {
+    get
+  }
+  public static let shared: LiteSurvey.LiteSurveyDeviceScanner
+  public var pendingDelegate: (any LiteSurvey.LiteSurveyDeviceDelegate)?
+  public func startAccessoryScan(delegate: any LiteSurvey.AccessoryScanDelegate)
+  public func connectAccessory(accessory: LiteSurvey.AccessoryScanResult, delegate: any LiteSurvey.LiteSurveyDeviceDelegate)
+  public func stopAccessoryScan()
+  public func startScan(delegate: any LiteSurvey.LiteSurveyDeviceDelegate)
+  public func connectAvailableEaAccessory(delegate: any LiteSurvey.LiteSurveyDeviceDelegate) -> Swift.Bool
+  @objc deinit
+}
+extension LiteSurvey.AttitudeSensorMode : Swift.Equatable {}
+extension LiteSurvey.AttitudeSensorMode : Swift.Hashable {}
+extension LiteSurvey.AttitudeSensorMode : Swift.RawRepresentable {}
+extension LiteSurvey.DataTransportType : Swift.Equatable {}
+extension LiteSurvey.DataTransportType : Swift.Hashable {}
+extension LiteSurvey.DataTransportType : Swift.RawRepresentable {}
+extension LiteSurvey.GnssFixStatus : Swift.Equatable {}
+extension LiteSurvey.GnssFixStatus : Swift.Hashable {}
+extension LiteSurvey.GnssFixStatus : Swift.RawRepresentable {}
+extension LiteSurvey.GnssSystem : Swift.Equatable {}
+extension LiteSurvey.GnssSystem : Swift.Hashable {}
+extension LiteSurvey.GnssSystem : Swift.RawRepresentable {}
+extension LiteSurvey.LiteSurveyDeviceType : Swift.Equatable {}
+extension LiteSurvey.LiteSurveyDeviceType : Swift.Hashable {}
+extension LiteSurvey.LiteSurveyDeviceType : Swift.RawRepresentable {}
+extension LiteSurvey.NmeaType : Swift.Equatable {}
+extension LiteSurvey.NmeaType : Swift.Hashable {}
+extension LiteSurvey.NmeaType : Swift.RawRepresentable {}
+extension LiteSurvey.NtripConnectionStatus : Swift.Equatable {}
+extension LiteSurvey.NtripConnectionStatus : Swift.Hashable {}
+extension LiteSurvey.NtripConnectionStatus : Swift.RawRepresentable {}

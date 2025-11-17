@@ -6,5 +6,7 @@
 	<array>
 		<string>com.woncan.data</string>
 	</array>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Bluetooth access allows the app to discover and communicate with nearby accessories.</string>
 </dict>
 </plist>

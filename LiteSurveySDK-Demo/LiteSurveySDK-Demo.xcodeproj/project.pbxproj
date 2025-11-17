@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31399D1E7DA44F8A46DE20F3 /* Pods_LiteSurveySDK_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B45F754170BD21814E181 /* Pods_LiteSurveySDK_Demo.framework */; };
+		F89F9E922ECB2BE90073A08E /* LiteSurvey in Frameworks */ = {isa = PBXBuildFile; productRef = F89F9E912ECB2BE90073A08E /* LiteSurvey */; };
 		F8A9ED312CDC926900AD112F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9ED302CDC926900AD112F /* AppDelegate.swift */; };
 		F8A9ED352CDC926900AD112F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9ED342CDC926900AD112F /* ViewController.swift */; };
 		F8A9ED382CDC926900AD112F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F8A9ED372CDC926900AD112F /* Base */; };
@@ -16,9 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D8DF4E580EAACCF9B5B4B103 /* Pods-LiteSurveySDK-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteSurveySDK-Demo.release.xcconfig"; path = "Target Support Files/Pods-LiteSurveySDK-Demo/Pods-LiteSurveySDK-Demo.release.xcconfig"; sourceTree = "<group>"; };
-		DBE9CAFC49782FC62382CC22 /* Pods-LiteSurveySDK-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiteSurveySDK-Demo.debug.xcconfig"; path = "Target Support Files/Pods-LiteSurveySDK-Demo/Pods-LiteSurveySDK-Demo.debug.xcconfig"; sourceTree = "<group>"; };
-		EE5B45F754170BD21814E181 /* Pods_LiteSurveySDK_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiteSurveySDK_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A9ED2D2CDC926900AD112F /* LiteSurveySDK-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiteSurveySDK-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A9ED302CDC926900AD112F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8A9ED342CDC926900AD112F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,7 +23,6 @@
 		F8A9ED392CDC926B00AD112F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8A9ED3C2CDC926B00AD112F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8A9ED3E2CDC926B00AD112F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F8A9ED442CDC946300AD112F /* LiteSurveySDK-Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiteSurveySDK-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,37 +30,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31399D1E7DA44F8A46DE20F3 /* Pods_LiteSurveySDK_Demo.framework in Frameworks */,
+				F89F9E922ECB2BE90073A08E /* LiteSurvey in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3B5695C9D7141FC55E958EFB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DBE9CAFC49782FC62382CC22 /* Pods-LiteSurveySDK-Demo.debug.xcconfig */,
-				D8DF4E580EAACCF9B5B4B103 /* Pods-LiteSurveySDK-Demo.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		827E07B97E2EBFDDFD995085 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				EE5B45F754170BD21814E181 /* Pods_LiteSurveySDK_Demo.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F8A9ED242CDC926900AD112F = {
 			isa = PBXGroup;
 			children = (
 				F8A9ED2F2CDC926900AD112F /* LiteSurveySDK-Demo */,
 				F8A9ED2E2CDC926900AD112F /* Products */,
-				3B5695C9D7141FC55E958EFB /* Pods */,
-				827E07B97E2EBFDDFD995085 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,7 +62,6 @@
 				F8A9ED392CDC926B00AD112F /* Assets.xcassets */,
 				F8A9ED3B2CDC926B00AD112F /* LaunchScreen.storyboard */,
 				F8A9ED3E2CDC926B00AD112F /* Info.plist */,
-				F8A9ED442CDC946300AD112F /* LiteSurveySDK-Demo-Bridging-Header.h */,
 			);
 			path = "LiteSurveySDK-Demo";
 			sourceTree = "<group>";
@@ -97,11 +73,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8A9ED412CDC926B00AD112F /* Build configuration list for PBXNativeTarget "LiteSurveySDK-Demo" */;
 			buildPhases = (
-				97DBB6462DEBED8609C722DC /* [CP] Check Pods Manifest.lock */,
 				F8A9ED292CDC926900AD112F /* Sources */,
 				F8A9ED2A2CDC926900AD112F /* Frameworks */,
 				F8A9ED2B2CDC926900AD112F /* Resources */,
-				8639CE4A467BDC4A3FC68C32 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -137,6 +111,9 @@
 				Base,
 			);
 			mainGroup = F8A9ED242CDC926900AD112F;
+			packageReferences = (
+				F89F9E902ECB2BE90073A08E /* XCLocalSwiftPackageReference "../../LiteSurveySDK-iOS" */,
+			);
 			productRefGroup = F8A9ED2E2CDC926900AD112F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -158,48 +135,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8639CE4A467BDC4A3FC68C32 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LiteSurveySDK-Demo/Pods-LiteSurveySDK-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LiteSurveySDK-Demo/Pods-LiteSurveySDK-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiteSurveySDK-Demo/Pods-LiteSurveySDK-Demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		97DBB6462DEBED8609C722DC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LiteSurveySDK-Demo-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F8A9ED292CDC926900AD112F /* Sources */ = {
@@ -354,7 +289,6 @@
 		};
 		F8A9ED422CDC926B00AD112F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBE9CAFC49782FC62382CC22 /* Pods-LiteSurveySDK-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -379,7 +313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.woncan.LiteSurveySDK-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LiteSurveySDK-Demo/LiteSurveySDK-Demo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -388,7 +322,6 @@
 		};
 		F8A9ED432CDC926B00AD112F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8DF4E580EAACCF9B5B4B103 /* Pods-LiteSurveySDK-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -413,7 +346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.woncan.LiteSurveySDK-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "LiteSurveySDK-Demo/LiteSurveySDK-Demo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -441,6 +374,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		F89F9E902ECB2BE90073A08E /* XCLocalSwiftPackageReference "../../LiteSurveySDK-iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../LiteSurveySDK-iOS";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F89F9E912ECB2BE90073A08E /* LiteSurvey */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LiteSurvey;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F8A9ED252CDC926900AD112F /* Project object */;
 }

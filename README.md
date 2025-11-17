@@ -11,7 +11,7 @@ LiteSurvey SDK for iOS can connect to LiteSurvey devices and
 
 By integrating this SDK, you can support LiteSurvey device's high-accuracy position in your own app.
 
-This SDK is also used in Woncan's official iOS app, LiteGPS.
+This SDK is also used in Woncan's official iOS app, LiteSurvey Pro.
 
 ## iOS system requirement
 
@@ -21,39 +21,24 @@ iOS 13.0 or above is required.
 
 ### 1. Adding LiteSurvey as a dependency
 
-**Method 1: CocoaPods (preferred)**
+**Method 1:  Swift Package Manager (Preferred)**
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+1.  Follow the instructions for
+    [adding package dependencies to your app in Xcode](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app).
 
-```bash
-$ gem install cocoapods
-```
+2.  In the "Enter Package URL" field, enter this GitHub repository:
 
-To integrate LiteSurvey into your Xcode project using CocoaPods, specify it in your `Podfile`:
+    ```
+    https://github.com/WoncanHK/LiteSurveySDK-iOS
+    ```
 
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '13.0'
-use_frameworks!
-
-target '<Your Target Name>' do
-    pod 'LiteSurvey', '~> 1.0.2'
-end
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
+3.  Select the version of the LiteSurveySDK for iOS that you want to use. For new projects, we recommend specifying the latest version and using the "Exact Version" option.
 
 **Method 2: Manual integration**
 
-If you prefer not to use Cocoapods, you can integrate LiteSurvey into your project manually. The SDK framework file is available under "Releases".
+If you prefer not to use Swift Package Manager, you can integrate LiteSurvey into your project manually. The SDK framework file is available under "Releases".
 
-You will need to Embed & Sign the LiteSurvey.framework file:
-
-![](Images/EmbeddedContent.jpg)
+You will need to Embed & Sign the LiteSurvey framework in the target settings of your app.
 
 ### 2. Configure info.plist
 
@@ -67,34 +52,33 @@ If device connection in background mode is desired, you may optionally add the "
 
 ### 3. Import the Objective-C header
 
-LiteSurvey SDK is written in Objective-C. Add `#import <LiteSurvey/LiteSurvey.h>` to your Objective-C source file to start using the SDK. For applications developed in Swift, a bridging header is required.
+LiteSurvey SDK is written in Swift. For Swift projects, add `import LiteSurvey` to the top of your Swift file. For Objective-C projects, add `#import <LiteSurvey/LiteSurvey.h>`.
 
 ### 4. Scanning for devices
 
-Use the `LiteSurveyDeviceInterface.startScan` method to start scanning.
+Use the `LiteSurveyDeviceScanner.shared.startScan` method to start scanning.
 
 ### 5. Receive device data (e.g. location)
 
-While initializing `LiteSurveyDeviceInterface`, register a delegate implementing the `LiteSurveyDeviceDelegate` interface to receive device data.
+When connecting to a device, register a delegate implementing the `LiteSurveyDeviceDelegate` interface to receive device data.
 
 ### Code example
 
 The following code snippet is a minimal code example in Swift that
 
-1. Scans for and connect to LiteSurvey devices.
-2. Prints the location information reported by the device to debug output.
+1. Scans for nearby LiteSurvey devices.
+2. After connection, prints the location information reported by the device to debug output.
 
 ```Swift
-class ViewController: UIViewController,LiteSurveyDeviceDelegate {
-  var liteSurveyInterface: LiteSurveyDeviceInterface?
+class ViewController: UIViewController, LiteSurveyDeviceDelegate {
+    
   override func viewDidLoad() {
         super.viewDidLoad()
-        liteSurveyInterface = LiteSurveyDeviceInterface(delegate: self)
   }
 
     //Scanning for LiteSurvey devices
-    public func toSearch() {
-        liteSurveyInterface?.startScan()
+    public func scan() {
+        LiteSurveyDeviceScanner.shared.startScan(delegate: self)
     }
 
     // Receive Location delegate

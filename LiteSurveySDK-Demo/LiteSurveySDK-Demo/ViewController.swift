@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import LiteSurvey
 
-class ViewController: UIViewController,LiteSurveyDeviceDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var deviceNameLabel: UILabel!
     @IBOutlet weak var powerLabel: UILabel!
@@ -25,7 +26,7 @@ class ViewController: UIViewController,LiteSurveyDeviceDelegate {
     
     @IBOutlet weak var firmwareUpgradeTipsLable: UILabel!
     
-    var liteSurveyInterface: LiteSurveyDeviceInterface?
+    var liteSurveyDevice: LiteSurveyDevice?
     var locationModel: LiteSurveyLocationModel?
     var deviceInfoModel: LiteSurveyDeviceInfoModel?
     var batteryInfoModel: BatteryInfoModel?
@@ -34,7 +35,10 @@ class ViewController: UIViewController,LiteSurveyDeviceDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        liteSurveyInterface = LiteSurveyDeviceInterface(delegate: self)
+        let _ = LiteSurveyDeviceScanner.shared.connectAvailableEaAccessory(delegate: self)
+        //Log
+        LiteSurveyDevice.setLoggingLevel(level: .debug)
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,29 +54,26 @@ class ViewController: UIViewController,LiteSurveyDeviceDelegate {
         toSearch()
     }
     
-    
-    
     // MARK: end
     public func endListening() {
-        if liteSurveyInterface != nil {
+        if liteSurveyDevice != nil {
             toDisconnect()
         }
-        liteSurveyInterface = nil
+        liteSurveyDevice = nil
     }
     
     // MARK: search device
     public func toSearch() {
-        liteSurveyInterface?.startScan()
+        LiteSurveyDeviceScanner.shared.startScan(delegate: self)
     }
     
     // MARK: disconnect
     public func toDisconnect() {
-        liteSurveyInterface?.disconnect()
+        liteSurveyDevice?.disconnect()
     }
     
     func setData(){
-        //deviceNameLabel.text = deviceInfoModel?.deviceModel ?? ""
-        deviceNameLabel.text = self.liteSurveyInterface?.displayName
+        deviceNameLabel.text = self.liteSurveyDevice?.displayName
         powerLabel.text = "\(batteryInfoModel?.percentageRemaining ?? 0)%"
         var stateDesc = "Single"
         switch self.locationModel?.fixStatus {
@@ -111,12 +112,12 @@ class ViewController: UIViewController,LiteSurveyDeviceDelegate {
     }
     
     @IBAction func disconnectNtripEvent(_ sender: Any) {
-        self.liteSurveyInterface?.stopNtripConnection()
+        self.liteSurveyDevice?.stopNtripConnection()
     }
    
     
     @IBAction func setGnssSystemsEvent(_ sender: Any) {
-        self.liteSurveyInterface?.setGnssSystems(false,enableGLONASS: true,enableGALILEO: false,enableQZSS: false,enableBeidou: false)
+        self.liteSurveyDevice?.setGnssSystems(enableGPS: false,enableGLONASS: true,enableGALILEO: false,enableQZSS: false,enableBeidou: false)
     }
     
     
@@ -129,139 +130,135 @@ class ViewController: UIViewController,LiteSurveyDeviceDelegate {
                 model.username = self.accountTextField.text!
                 model.password = self.passwordTextField.text!
                 model.mountpoint = self.mountPointTextField.text!
-                self.liteSurveyInterface?.startNtripConnection(model, transmitNmeaPosition: true)
+                self.liteSurveyDevice?.startNtripConnection(ntripAccount: model, transmitNmeaPosition: true)
             }else{
                 self.ntripSwitch.isOn = false
             }
         }else{
-            self.liteSurveyInterface?.stopNtripConnection()
+            self.liteSurveyDevice?.stopNtripConnection()
         }
-        
     }
     
     @IBAction func nmeaGSAOutputSwitchValueChangeEvent(_ sender: UISwitch) {
-        self.liteSurveyInterface?.setNmeaOutput(NmeaType.GSA, enable: sender.isOn)
+        self.liteSurveyDevice?.setNmeaOutput(nmeaType: NmeaType.GSA, enable: sender.isOn)
     }
     
     @IBAction func nmeaGSVOutputSwitchValueChangeEvent(_ sender: UISwitch) {
-        self.liteSurveyInterface?.setNmeaOutput(NmeaType.GSV, enable: sender.isOn)
+        self.liteSurveyDevice?.setNmeaOutput(nmeaType: NmeaType.GSV, enable: sender.isOn)
     }
     
     @IBAction func nmeaVTGOutputSwitchValueChangeEvent(_ sender: UISwitch) {
-        self.liteSurveyInterface?.setNmeaOutput(NmeaType.VTG, enable: false)
+        self.liteSurveyDevice?.setNmeaOutput(nmeaType: NmeaType.VTG, enable: false)
     }
     
     @IBAction func LaserSwitchValueChangeEvent(_ sender: UISwitch) {
-        self.liteSurveyInterface?.setLaserState(sender.isOn)
+        self.liteSurveyDevice?.setLaserState(enable: sender.isOn)
     }
     
     @IBAction func IMUSwitchValueChangeEvent(_ sender: UISwitch) {
         if sender.isOn {
-            self.liteSurveyInterface?.setImuOutput(100)
+            self.liteSurveyDevice?.setImuOutput(rateMillis: 100)
         }
     }
     
     @IBAction func RTCMOutputSwitchValueChangeEvent(_ sender: UISwitch) {
         if !sender.isOn{
-            self.liteSurveyInterface?.disableRtcmOutput()
+            self.liteSurveyDevice?.disableRtcmOutput()
         }else{
-            self.liteSurveyInterface?.setRtcmOutput([1074,1084,1094,1114,1124])
+            self.liteSurveyDevice?.enableRtcmOutput(rtcmMessageNumbers: [1074,1084,1094,1114,1124])
         }
     }
     
     @IBAction func getNtripMountpointEvent(_ sender: Any) {
         if self.addressTextField.text!.count > 0 , self.portTextField.text!.count > 0{
-            self.liteSurveyInterface?.queryNtripMountpoint(self.addressTextField.text!, port: self.portTextField.text!)
+            self.liteSurveyDevice?.queryNtripMountpoint(address: self.addressTextField.text!, port: Int(self.portTextField.text!) ?? 0)
         }
     }
     
     @IBAction func firmwareUpgradeQueryEvent(_ sender: Any) {
-        self.liteSurveyInterface?.queryFirmwareUpgrade()
+        self.liteSurveyDevice?.queryFirmwareUpgrade()
     }
 }
 
 // MARK: LiteSurveyDeviceDelegate
-extension ViewController {
+extension ViewController: LiteSurveyDeviceDelegate {
     
     // MARK: Receive Data
-    func deviceDidConnect() {
-        print("deviceDidConnect")
+    func deviceDidConnect(device: LiteSurveyDevice) {
+        
+        switch device.deviceType {
+        case .GnssReceiver:
+            liteSurveyDevice = device
+        default:
+            break
+        }
     }
     
     // MARK: Device disconnect
-    func deviceDidDisconnect() {
+    func deviceDidDisconnect(device: LiteSurveyDevice) {
         print("deviceDidDisconnect")
+        if (device == liteSurveyDevice){
+            liteSurveyDevice = nil
+        }
+        
     }
     
     // MARK: Receive Location
-    func didReceiveLocation(_ location: LiteSurveyLocationModel!) {
+    func didReceiveLocation(_ location: LiteSurveyLocationModel) {
         locationModel = location
         setData()
     }
     
     // MARK: Receive DeviceInfo
-    func didReceiveDeviceInfo(_ deviceInfo: LiteSurveyDeviceInfoModel!) {
+    func didReceiveDeviceInfo(device: LiteSurveyDevice, deviceInfo: LiteSurveyDeviceInfoModel) {
         deviceInfoModel = deviceInfo
+        print(deviceInfo.serialNumber)
     }
     
     // MARK: Receive BatteryInfo
-    func didReceiveBatteryInfo(_ batteryInfo: BatteryInfoModel!) {
+    func didReceiveBatteryInfo(_ batteryInfo: BatteryInfoModel) {
         batteryInfoModel = batteryInfo
     }
     
     // MARK: Receive Nmea
-    func didReceiveNmeaMessage(_ nmeaMessage: String!) {
-        //print("nmeaMessage:\(nmeaMessage!)")
+    func didReceiveNmeaMessage(_ nmeaMessage: String) {
     }
     
     // MARK: Receive SatelliteInfo
-    func didReceiveSatelliteInfo(_ satelliteInfoList: [SatelliteInfoModel]!) {
-        
-//        for model in satelliteInfoList {
-//            print("satelliteInfo GnssSystem:\(model.system)")
-//        }
+    func didReceiveSatelliteInfo(_ satelliteInfoList: [SatelliteInfoModel]) {
     }
     
     // MARK: Receive RtcmMessage
-    func didReceiveRtcmMessage(_ rtcmMessage: Data!) {
-        //print("rtcmMessage:\(rtcmMessage!)")
+    func didReceiveRtcmMessage(_ rtcmMessage: Data) {
     }
     
-    func didReceiveImuData(_ imuInfo: ImuInfoModel!) {
-        //print("\(imuInfo!)")
-    }
     
     // MARK: Receive Mountpoint
-    func ntripMountpointQueryDidFinish(withResult mountpointList: [String]!) {
+    func ntripMountpointQueryDidFinishWithResult(_ mountpointList: [String]) {
         self.mountPointTextField.text = mountpointList.first
     }
     
     // MARK: Receive MountpointError
-    func ntripMountpointQueryDidFailWithError(_ errorMessagre: String!) {
-        print("ntripMountpointQueryDidFailWithError:\(errorMessagre!)")
+    func ntripMountpointQueryDidFailWithError(_ errorMessage: String) {
     }
     
     // MARK: Receive newFirmwareAvailable
     func didReceiveFirmwareUpgradeAvailability(_ newFirmwareAvailable: Bool) {
-        print("firmwareUpgradeAvailability:\(newFirmwareAvailable)")
         DispatchQueue.main.async {
             self.firmwareUpgradeTipsLable.text = newFirmwareAvailable ? "New firmware available" : "Firmware upgrade not available"
         }
     }
     
     // MARK: Receive firmwareUpgrade progressPercentage
-    func firmwareUpgradeDidProgress(_ progressPercentage: Int32) {
-        print("firmwareUpgradeprogressPercentage:\(progressPercentage)%")
+    func firmwareUpgradeDidProgress(_ progressPercentage: Int) {
     }
     
     // MARK: Receive firmwareUpgrade errorMessage
-    func firmwareUpgradeDidFailWithError(_ errorMessage: String!) {
-        print("firmwareUpgradeDidFailWithError:\(errorMessage!)")
+    func firmwareUpgradeDidFailWithError(_ errorMessage: String) {
     }
     
     // MARK: Receive ntrip Connection Status
     func ntripConnectionStatusDidChange(_ ntripConnectionStatus: NtripConnectionStatus) {
-        print("ntripConnectionStatusDidChange:\(ntripConnectionStatus)")
         switch ntripConnectionStatus {
         case .success:
             
@@ -276,8 +273,8 @@ extension ViewController {
     }
     
     // MARK: Receive ntrip Connection errorMessage
-    func ntripConnectionDidFailWithError(_ errorMessage: String!) {
-        print("ntripConnectionDidFailWithError:\(errorMessage!)")
+    func ntripConnectionDidFailWithError(_ errorMessage: String) {
         self.ntripSwitch.isOn = false
     }
+    
 }
