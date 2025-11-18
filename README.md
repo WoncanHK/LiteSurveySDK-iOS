@@ -50,7 +50,7 @@ If device connection in background mode is desired, you may optionally add the "
 
 ![](Images/BackgroundModes.jpg)
 
-### 3. Import the Objective-C header
+### 3. Import LiteSurvey in Your Swift / Objective-C Project
 
 LiteSurvey SDK is written in Swift. For Swift projects, add `import LiteSurvey` to the top of your Swift file. For Objective-C projects, add `#import <LiteSurvey/LiteSurvey.h>`.
 
