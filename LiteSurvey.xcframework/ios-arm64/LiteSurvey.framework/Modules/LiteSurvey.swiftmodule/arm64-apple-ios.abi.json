@@ -4631,7 +4631,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(location:latitude:longitude:altitude:hAcc:vAcc:)",
+            "printedName": "init(location:latitude:longitude:wgs84Altitude:hAcc:vAcc:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -4677,8 +4677,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "c:@CM@LiteSurvey@objc(cs)LiteSurveyLocationModel(im)initWithLocation:latitude:longitude:altitude:hAcc:vAcc:",
-            "mangledName": "$s10LiteSurvey0aB13LocationModelC8location8latitude9longitude8altitude4hAcc01vI0A2C_S5dtcfc",
+            "usr": "c:@CM@LiteSurvey@objc(cs)LiteSurveyLocationModel(im)initWithLocation:latitude:longitude:wgs84Altitude:hAcc:vAcc:",
+            "mangledName": "$s10LiteSurvey0aB13LocationModelC8location8latitude9longitude13wgs84Altitude4hAcc01vJ0A2C_S5dtcfc",
             "moduleName": "LiteSurvey",
             "declAttributes": [
               "Dynamic",
@@ -7558,6 +7558,48 @@
           },
           {
             "kind": "Var",
+            "name": "terminatedByUser",
+            "printedName": "terminatedByUser",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(LiteSurvey.NtripConnectionStatus.Type) -> LiteSurvey.NtripConnectionStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NtripConnectionStatus",
+                    "printedName": "LiteSurvey.NtripConnectionStatus",
+                    "usr": "c:@M@LiteSurvey@E@NtripConnectionStatus"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "LiteSurvey.NtripConnectionStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NtripConnectionStatus",
+                        "printedName": "LiteSurvey.NtripConnectionStatus",
+                        "usr": "c:@M@LiteSurvey@E@NtripConnectionStatus"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@LiteSurvey@E@NtripConnectionStatus@NtripConnectionStatusTerminatedByUser",
+            "mangledName": "$s10LiteSurvey21NtripConnectionStatusO16terminatedByUseryA2CmF",
+            "moduleName": "LiteSurvey",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 5
+          },
+          {
+            "kind": "Var",
             "name": "description",
             "printedName": "description",
             "children": [
@@ -10247,13 +10289,22 @@
       },
       {
         "kind": "Import",
+        "name": "CoreBluetooth",
+        "printedName": "CoreBluetooth",
+        "declKind": "Import",
+        "moduleName": "LiteSurvey",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "ExternalAccessory",
         "printedName": "ExternalAccessory",
         "declKind": "Import",
         "moduleName": "LiteSurvey",
         "declAttributes": [
-          "AccessControl",
-          "RawDocComment"
+          "AccessControl"
         ]
       },
       {
@@ -11298,14 +11349,14 @@
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Models\/LiteSurveyLocationModel+Init.swift",
       "kind": "FloatLiteral",
-      "offset": 3118,
+      "offset": 3133,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Models\/LiteSurveyLocationModel+Init.swift",
       "kind": "FloatLiteral",
-      "offset": 3144,
+      "offset": 3159,
       "length": 3,
       "value": "0.0"
     },
@@ -11625,6 +11676,13 @@
       "value": "4"
     },
     {
+      "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Enums\/NtripConnectionStatus.swift",
+      "kind": "IntegerLiteral",
+      "offset": 538,
+      "length": 16,
+      "value": "5"
+    },
+    {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Device\/LiteSurveyDevice.swift",
       "kind": "BooleanLiteral",
       "offset": 5698,
@@ -11634,21 +11692,21 @@
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Device\/LiteSurveyDevice.swift",
       "kind": "FloatLiteral",
-      "offset": 14661,
+      "offset": 14680,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Device\/LiteSurveyDeviceScanner.swift",
       "kind": "Array",
-      "offset": 266,
+      "offset": 287,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Device\/LiteSurveyDeviceScanner.swift",
       "kind": "StringLiteral",
-      "offset": 5856,
+      "offset": 5877,
       "length": 39,
       "value": "\"UISupportedExternalAccessoryProtocols\""
     },

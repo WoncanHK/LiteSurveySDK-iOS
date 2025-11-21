@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F89634FC2ECB32BD004F8B20 /* LiteSurvey in Frameworks */ = {isa = PBXBuildFile; productRef = F89634FB2ECB32BD004F8B20 /* LiteSurvey */; };
+		F89634FF2ECB3429004F8B20 /* LiteSurvey in Frameworks */ = {isa = PBXBuildFile; productRef = F89634FE2ECB3429004F8B20 /* LiteSurvey */; };
 		F89F9E922ECB2BE90073A08E /* LiteSurvey in Frameworks */ = {isa = PBXBuildFile; productRef = F89F9E912ECB2BE90073A08E /* LiteSurvey */; };
 		F8A9ED312CDC926900AD112F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9ED302CDC926900AD112F /* AppDelegate.swift */; };
 		F8A9ED352CDC926900AD112F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9ED342CDC926900AD112F /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F89634FC2ECB32BD004F8B20 /* LiteSurvey in Frameworks */,
+				F89634FF2ECB3429004F8B20 /* LiteSurvey in Frameworks */,
 				F89F9E922ECB2BE90073A08E /* LiteSurvey in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +116,7 @@
 			);
 			mainGroup = F8A9ED242CDC926900AD112F;
 			packageReferences = (
-				F89F9E902ECB2BE90073A08E /* XCLocalSwiftPackageReference "../../LiteSurveySDK-iOS" */,
+				F89634FD2ECB3429004F8B20 /* XCRemoteSwiftPackageReference "LiteSurveySDK-iOS" */,
 			);
 			productRefGroup = F8A9ED2E2CDC926900AD112F /* Products */;
 			projectDirPath = "";
@@ -375,14 +379,36 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		F89F9E902ECB2BE90073A08E /* XCLocalSwiftPackageReference "../../LiteSurveySDK-iOS" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../LiteSurveySDK-iOS";
+/* Begin XCRemoteSwiftPackageReference section */
+		F89634FA2ECB32BD004F8B20 /* XCRemoteSwiftPackageReference "LiteSurveySDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WoncanHK/LiteSurveySDK-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+		F89634FD2ECB3429004F8B20 /* XCRemoteSwiftPackageReference "LiteSurveySDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WoncanHK/LiteSurveySDK-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F89634FB2ECB32BD004F8B20 /* LiteSurvey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F89634FA2ECB32BD004F8B20 /* XCRemoteSwiftPackageReference "LiteSurveySDK-iOS" */;
+			productName = LiteSurvey;
+		};
+		F89634FE2ECB3429004F8B20 /* LiteSurvey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F89634FD2ECB3429004F8B20 /* XCRemoteSwiftPackageReference "LiteSurveySDK-iOS" */;
+			productName = LiteSurvey;
+		};
 		F89F9E912ECB2BE90073A08E /* LiteSurvey */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LiteSurvey;

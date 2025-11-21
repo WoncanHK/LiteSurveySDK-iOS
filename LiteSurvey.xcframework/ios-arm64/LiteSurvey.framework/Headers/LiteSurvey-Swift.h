@@ -697,7 +697,7 @@ SWIFT_CLASS("_TtC10LiteSurvey23LiteSurveyLocationModel")
 
 @interface LiteSurveyLocationModel (SWIFT_EXTENSION(LiteSurvey))
 /// 用于倾斜测量，将倾斜测量的位置结果和原始位置model的解状态、DOP等信息融合，组成新的位置Model
-- (nonnull instancetype)initWithLocation:(LiteSurveyLocationModel * _Nonnull)location latitude:(double)latitude longitude:(double)longitude altitude:(double)altitude hAcc:(double)hAcc vAcc:(double)vAcc;
+- (nonnull instancetype)initWithLocation:(LiteSurveyLocationModel * _Nonnull)location latitude:(double)latitude longitude:(double)longitude wgs84Altitude:(double)wgs84Altitude hAcc:(double)hAcc vAcc:(double)vAcc;
 @end
 
 /// Types of NMEA messages
@@ -753,6 +753,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, NtripConnectionStatus, "NtripConnectionStatu
   NtripConnectionStatusRetrying = 3,
 /// Attempting connection
   NtripConnectionStatusConnecting = 4,
+/// Connection terminated by user
+  NtripConnectionStatusTerminatedByUser = 5,
 };
 
 @class SignalInfoModel;

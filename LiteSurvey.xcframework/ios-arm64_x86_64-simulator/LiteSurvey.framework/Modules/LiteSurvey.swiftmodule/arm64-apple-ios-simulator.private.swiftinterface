@@ -169,7 +169,7 @@ extension LiteSurvey.DemoDevice : CoreLocation.CLLocationManagerDelegate {
   @objc deinit
 }
 extension LiteSurvey.LiteSurveyLocationModel {
-  @objc convenience dynamic public init(location: LiteSurvey.LiteSurveyLocationModel, latitude: Swift.Double, longitude: Swift.Double, altitude: Swift.Double, hAcc: Swift.Double, vAcc: Swift.Double)
+  @objc convenience dynamic public init(location: LiteSurvey.LiteSurveyLocationModel, latitude: Swift.Double, longitude: Swift.Double, wgs84Altitude: Swift.Double, hAcc: Swift.Double, vAcc: Swift.Double)
 }
 @objc @_inheritsConvenienceInitializers @objcMembers public class NtripAccountModel : ObjectiveC.NSObject {
   @objc public var address: Swift.String
@@ -240,6 +240,7 @@ public protocol NtripMountpointDelegate {
   case socketClosed
   case retrying
   case connecting
+  case terminatedByUser
   public var description: Swift.String {
     get
   }
