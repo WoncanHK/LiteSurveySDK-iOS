@@ -212,7 +212,7 @@ extension ViewController: LiteSurveyDeviceDelegate {
     // MARK: Receive DeviceInfo
     func didReceiveDeviceInfo(device: LiteSurveyDevice, deviceInfo: LiteSurveyDeviceInfoModel) {
         deviceInfoModel = deviceInfo
-        print(deviceInfo.serialNumber)
+        //print(deviceInfo.serialNumber)
     }
     
     // MARK: Receive BatteryInfo
@@ -222,6 +222,7 @@ extension ViewController: LiteSurveyDeviceDelegate {
     
     // MARK: Receive Nmea
     func didReceiveNmeaMessage(_ nmeaMessage: String) {
+        //print(nmeaMessage)
     }
     
     // MARK: Receive SatelliteInfo
@@ -230,6 +231,7 @@ extension ViewController: LiteSurveyDeviceDelegate {
     
     // MARK: Receive RtcmMessage
     func didReceiveRtcmMessage(_ rtcmMessage: Data) {
+        //print(rtcmMessage)
     }
     
     

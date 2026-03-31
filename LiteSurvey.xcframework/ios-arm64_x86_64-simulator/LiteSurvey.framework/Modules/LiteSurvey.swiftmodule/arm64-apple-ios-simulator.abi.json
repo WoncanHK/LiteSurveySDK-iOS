@@ -7600,6 +7600,48 @@
           },
           {
             "kind": "Var",
+            "name": "terminatedDueToDeviceDisconnection",
+            "printedName": "terminatedDueToDeviceDisconnection",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(LiteSurvey.NtripConnectionStatus.Type) -> LiteSurvey.NtripConnectionStatus",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NtripConnectionStatus",
+                    "printedName": "LiteSurvey.NtripConnectionStatus",
+                    "usr": "c:@M@LiteSurvey@E@NtripConnectionStatus"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "LiteSurvey.NtripConnectionStatus.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NtripConnectionStatus",
+                        "printedName": "LiteSurvey.NtripConnectionStatus",
+                        "usr": "c:@M@LiteSurvey@E@NtripConnectionStatus"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@LiteSurvey@E@NtripConnectionStatus@NtripConnectionStatusTerminatedDueToDeviceDisconnection",
+            "mangledName": "$s10LiteSurvey21NtripConnectionStatusO34terminatedDueToDeviceDisconnectionyA2CmF",
+            "moduleName": "LiteSurvey",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 6
+          },
+          {
+            "kind": "Var",
             "name": "description",
             "printedName": "description",
             "children": [
@@ -11468,28 +11510,28 @@
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Utils\/NtripMountpointQuery.swift",
       "kind": "StringLiteral",
-      "offset": 1976,
+      "offset": 2745,
       "length": 20,
       "value": "\"GET \/ HTTP\/1.0\r\n\""
     },
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Utils\/NtripMountpointQuery.swift",
       "kind": "StringLiteral",
-      "offset": 1999,
+      "offset": 2768,
       "length": 48,
       "value": "\"User-Agent: NTRIP GNSSInternetRadio\/1.4.11\r\n\""
     },
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Utils\/NtripMountpointQuery.swift",
       "kind": "StringLiteral",
-      "offset": 2050,
+      "offset": 2819,
       "length": 17,
       "value": "\"Accept: *\/*\r\n\""
     },
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Utils\/NtripMountpointQuery.swift",
       "kind": "StringLiteral",
-      "offset": 2070,
+      "offset": 2839,
       "length": 27,
       "value": "\"Connection: close\r\n\r\n\""
     },
@@ -11683,6 +11725,13 @@
       "value": "5"
     },
     {
+      "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Enums\/NtripConnectionStatus.swift",
+      "kind": "IntegerLiteral",
+      "offset": 637,
+      "length": 34,
+      "value": "6"
+    },
+    {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Device\/LiteSurveyDevice.swift",
       "kind": "BooleanLiteral",
       "offset": 5698,
@@ -11692,7 +11741,7 @@
     {
       "filePath": "\/Users\/woncan\/Desktop\/LiteSurveySDKDemo\/litesurvey-sdk-ios\/Device\/LiteSurveyDevice.swift",
       "kind": "FloatLiteral",
-      "offset": 14680,
+      "offset": 14776,
       "length": 3,
       "value": "0.0"
     },

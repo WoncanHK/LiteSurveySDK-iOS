@@ -415,7 +415,7 @@ SWIFT_CLASS("_TtC10LiteSurvey16LiteSurveyDevice")
 ///
 - (void)setNmeaOutputWithNmeaType:(enum NmeaType)nmeaType enable:(BOOL)enable;
 /// Enable the output of a RTCM message (if supported)
-/// \param rtcmMessageNumbers RTCM message number
+/// \param rtcmMessageNumbers RTCM message numbers. For a default set of RTCM messages, leave empty (recommended)
 ///
 - (void)enableRtcmOutputWithRtcmMessageNumbers:(NSArray<NSNumber *> * _Nonnull)rtcmMessageNumbers;
 /// Disable the output of a RTCM message (if supported)
@@ -755,6 +755,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, NtripConnectionStatus, "NtripConnectionStatu
   NtripConnectionStatusConnecting = 4,
 /// Connection terminated by user
   NtripConnectionStatusTerminatedByUser = 5,
+/// Stopped because the underlying LiteSurvey GNSS device has disconnected
+  NtripConnectionStatusTerminatedDueToDeviceDisconnection = 6,
 };
 
 @class SignalInfoModel;
@@ -1215,7 +1217,7 @@ SWIFT_CLASS("_TtC10LiteSurvey16LiteSurveyDevice")
 ///
 - (void)setNmeaOutputWithNmeaType:(enum NmeaType)nmeaType enable:(BOOL)enable;
 /// Enable the output of a RTCM message (if supported)
-/// \param rtcmMessageNumbers RTCM message number
+/// \param rtcmMessageNumbers RTCM message numbers. For a default set of RTCM messages, leave empty (recommended)
 ///
 - (void)enableRtcmOutputWithRtcmMessageNumbers:(NSArray<NSNumber *> * _Nonnull)rtcmMessageNumbers;
 /// Disable the output of a RTCM message (if supported)
@@ -1555,6 +1557,8 @@ typedef SWIFT_ENUM_NAMED(NSInteger, NtripConnectionStatus, "NtripConnectionStatu
   NtripConnectionStatusConnecting = 4,
 /// Connection terminated by user
   NtripConnectionStatusTerminatedByUser = 5,
+/// Stopped because the underlying LiteSurvey GNSS device has disconnected
+  NtripConnectionStatusTerminatedDueToDeviceDisconnection = 6,
 };
 
 @class SignalInfoModel;

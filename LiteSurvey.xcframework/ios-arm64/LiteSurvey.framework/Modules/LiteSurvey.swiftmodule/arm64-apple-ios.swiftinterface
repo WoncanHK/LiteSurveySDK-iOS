@@ -241,6 +241,7 @@ public protocol NtripMountpointDelegate {
   case retrying
   case connecting
   case terminatedByUser
+  case terminatedDueToDeviceDisconnection
   public var description: Swift.String {
     get
   }
